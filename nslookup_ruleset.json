@@ -8,6 +8,15 @@
     }
   ],
 
+  "aaaa_rule": [
+    {
+      "record_type": "AAAA",
+      "pattern": "^(?:fc00:|fd00:|fe80:|::1$)",
+      "severity": "Medium",
+      "message": "AAAA record resolves to a private IPv6 address (ULA/link-local/loopback); likely internal host leaked or misconfiguration."
+    }
+  ],
+
   "mx_rule": [
     {
       "type": "same_priority",
@@ -23,6 +32,87 @@
       "type": "no_mx",
       "severity": "Medium",
       "message": "No MX records found — domain may not be configured to receive email."
+    }
+  ],
+
+  "ns_rule": [
+    {
+
+    }
+  ],
+
+  "txt_rule": [
+    {
+      "provider": "Google",
+      "pattern": "(_spf\\.google\\.com|google[-._a-z0-9]*\\.google\\.com|google-site-verification|google)",
+      "severity": "Info",
+      "message": "Uses Google services (Google Workspace, site verification, or other Google integrations)."
+    },
+    {
+      "provider": "Microsoft",
+      "pattern": "(spf\\.protection\\.outlook\\.com|ms=ms|microsoft|onmicrosoft\\.com|_domaincontrol\\.azure)",
+      "severity": "Info",
+      "message": "Uses Microsoft services (Office365/Azure/Microsoft verification)."
+    },
+    {
+      "provider": "Stripe",
+      "pattern": "(stripe|_stripe_)",
+      "severity": "Info",
+      "message": "References to Stripe detected in TXT records (payment/webhook integration)."
+    },
+    {
+      "provider": "Apple",
+      "pattern": "(apple-developer|apple-domain-verification|apple)",
+      "severity": "Info",
+      "message": "Apple-related TXT record found (Apple services/verification)."
+    },
+    {
+      "provider": "OpenAI",
+      "pattern": "(openai|openai-verification)",
+      "severity": "Info",
+      "message": "OpenAI integration indicated by TXT records."
+    },
+    {
+      "provider": "Atlassian",
+      "pattern": "(atlassian|jira|confluence|crowd|bitbucket|atlassian-domain-verification)",
+      "severity": "Info",
+      "message": "Atlassian cloud integration detected (Jira/Confluence/Bitbucket)."
+    },
+    {
+      "provider": "Zoom",
+      "pattern": "(zoom\\.us|zoom-verification|zoom)",
+      "severity": "Info",
+      "message": "Zoom-related TXT entry detected."
+    },
+    {
+      "provider": "Uber",
+      "pattern": "(uber|uber-verification)",
+      "severity": "Info",
+      "message": "Uber-related TXT entry detected."
+    },
+    {
+      "provider": "Brevo",
+      "pattern": "(brevo|sendinblue|brevo-verification)",
+      "severity": "Info",
+      "message": "Brevo / Sendinblue email service reference found."
+    },
+    {
+      "provider": "Cursor",
+      "pattern": "(cursor|cursor-verification)",
+      "severity": "Info",
+      "message": "Cursor integration indicated by TXT records."
+    },
+    {
+      "provider": "Extensis",
+      "pattern": "(extensis|extensis-verification)",
+      "severity": "Info",
+      "message": "Extensis service reference detected."
+    },
+    {
+      "provider": "Pardot",
+      "pattern": "(pardot|pardot-verification|pardot\\.com)",
+      "severity": "Info",
+      "message": "Pardot marketing automation integration detected."
     }
   ],
 
